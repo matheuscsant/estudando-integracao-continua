@@ -133,6 +133,27 @@ class SimpleMathTest {
 
 	}
 
+	// test[System Under Test]_[Condition or State Change_[Expected Result]
+	@Test
+	@DisplayName("Test division by zero")
+	void testDivision_When_SecondNumberIsDividedByZero_ShouldThrowArithmeticException() {
+
+		System.out.println("Running method testDivision_When_SecondNumberIsDividedByZero_ShouldThrowArithmeticException");
+
+		// Given
+		double firstNumber = 0D;
+		double secondNumber = 6D;
+
+		var expectedMessage = "Impossible to divide by zero!";
+
+		// When / Then
+		ArithmeticException actual = assertThrows(ArithmeticException.class, () -> math.division(firstNumber, secondNumber),
+				() -> "Division by zero should throw an ArithmeticException");
+
+		assertEquals(expectedMessage, actual.getMessage(), () -> "Unexpected exception message");
+
+	}
+
 	@Test
 	@DisplayName("Test (6 + 2) / 2 = 4")
 	void testMean() {
