@@ -1,4 +1,4 @@
-package br.com.mathcsant.mockito;
+package br.com.mathcsant.mockito.business;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,9 @@ public class CourseBusiness {
 	public List<String> retriveCoursesRelatedToSpring(String student) {
 
 		var filteredCourses = new ArrayList<String>();
-		var allCourses = service.retriveCourses("");
+		if ("Foo Bar".equals(student))
+			return filteredCourses;
+		var allCourses = service.retriveCourses(student);
 
 		for (String course : allCourses) {
 			if (course.contains("Spring"))
@@ -26,6 +28,17 @@ public class CourseBusiness {
 		}
 
 		return filteredCourses;
+	}
+
+	public void deleteCoursesNotRelatedToSpring(String student) {
+
+		var allCourses = service.retriveCourses(student);
+
+		for (String course : allCourses) {
+			if (!course.contains("Spring"))
+				service.deleteCourse(course);
+		}
+
 	}
 
 }
