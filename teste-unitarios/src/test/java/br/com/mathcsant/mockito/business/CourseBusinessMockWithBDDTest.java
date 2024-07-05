@@ -65,7 +65,7 @@ class CourseBusinessMockWithBDDTest {
 		// Given / Arrange
 		given(mockService.retriveCourses("Matheus")).willReturn(courses);
 
-		// When / Act
+//		 When / Act
 		business.deleteCoursesNotRelatedToSpring("Matheus");
 
 		// Then / Assert

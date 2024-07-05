@@ -18,7 +18,7 @@ public class GreetingResource {
 
 	@GetMapping
 	public ResponseEntity<Greeting> getAnyGreeting(
-			@RequestParam(name = "content", defaultValue = "World") String content) {
+			@RequestParam(defaultValue = "World") String content) {
 
 		var teste = new Greeting.GreetingBuilder(counter.incrementAndGet(), content).setOptionalContent("Optional content")
 				.build();
